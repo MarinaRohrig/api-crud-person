@@ -1,8 +1,6 @@
 package br.com.futurodev.crud.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Date;
@@ -14,13 +12,28 @@ import java.util.Objects;
 public class Person implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "birth_date")
     private Date birthDate;
+
+    @Column(name = "time_of_birth")
     private LocalTime timeOfBirth;
+
+    @Column(name = "email", unique = true)
     private String email;
+
+    @Column (name = "state")
     private String state;
+
+    @Column (name = "city")
     private String city;
+
+    @Column (name = "street")
     private String street;
+
+    @Column (name = "cep")
     private String cep;
 
 
