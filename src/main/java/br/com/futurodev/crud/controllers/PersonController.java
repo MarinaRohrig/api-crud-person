@@ -17,7 +17,7 @@ public class PersonController {
     private PersonRepository personRepository;
 
     @GetMapping(value="/{id}",produces = "application/json")
-    public ResponseEntity<Person> getUserById(@RequestParam(value = "id")Long id){
+    public ResponseEntity<Person> getPersonById(@PathVariable(value = "id")Long id){
         Person pers = personRepository.findById(id).get();
         return new ResponseEntity<>(pers,HttpStatus.OK);
     }
