@@ -34,7 +34,7 @@ public class PersonController {
         return new ResponseEntity<>("Person updated with success!",HttpStatus.OK);
     }
 
-    @GetMapping(value="/{idUsuario}",produces = "application/json")
+    @GetMapping(value="/{id}",produces = "application/json")
     public ResponseEntity<Person> getUserById(@PathVariable(value = "id")Long id){
         Person pers = personRepository.findById(id).get();
         return new ResponseEntity<>(pers,HttpStatus.OK);
