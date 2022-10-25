@@ -15,11 +15,11 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "birth_date")
-    private Date birthDate;
+  //  @Column(name = "birth_date")
+  //  private Date birthDate;
 
-    @Column(name = "time_of_birth")
-    private LocalTime timeOfBirth;
+  //  @Column(name = "time_of_birth")
+   // private LocalTime timeOfBirth;
 
     @Column(name = "email", unique = true)
     private String email;
@@ -33,7 +33,7 @@ public class Person implements Serializable {
     @Column (name = "street")
     private String street;
 
-    @Column (name = "cep")
+    @Column (name = "cep",length = 9)
     private String cep;
 
 
@@ -58,7 +58,7 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public Date getBirthDate() {
+   /* public Date getBirthDate() {
         return birthDate;
     }
 
@@ -73,6 +73,8 @@ public class Person implements Serializable {
     public void setTimeOfBirth(LocalTime timeOfBirth) {
         this.timeOfBirth = timeOfBirth;
     }
+    */
+
 
     public String getEmail() {
         return email;
