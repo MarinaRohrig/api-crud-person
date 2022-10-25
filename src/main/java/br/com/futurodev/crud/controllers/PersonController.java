@@ -7,12 +7,28 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value= "/person")
 public class PersonController {
 
     @Autowired
     private PersonRepository personRepository;
+
+    @GetMapping(value="/{id}",produces = "application/json")
+    public ResponseEntity<Person> getUserById(@RequestParam(value = "id")Long id){
+        Person pers = personRepository.findById(id).get();
+        return new ResponseEntity<>(pers,HttpStatus.OK);
+    }
+
+    @GetMapping(value="/list")
+    @ResponseBody
+    public ResponseEntity<List<Person>> listPerson(){
+        List<Person> persons = personRepository.findAll();
+        return new ResponseEntity<List<Person>>(persons,HttpStatus.OK);
+
+    }
 
 
     @PostMapping(value = "/", produces = "application/json")
@@ -31,13 +47,6 @@ public class PersonController {
     @ResponseBody
     public ResponseEntity<String> delete(@RequestParam Long id){
         personRepository.deleteById(id);
-        return new ResponseEntity<>("Person updated with success!",HttpStatus.OK);
+        return new ResponseEntity<>("Person deleted with success!",HttpStatus.OK);
     }
-
-    @GetMapping(value="/{id}",produces = "application/json")
-    public ResponseEntity<Person> getUserById(@PathVariable(value = "id")Long id){
-        Person pers = personRepository.findById(id).get();
-        return new ResponseEntity<>(pers,HttpStatus.OK);
-    }
-
 }
