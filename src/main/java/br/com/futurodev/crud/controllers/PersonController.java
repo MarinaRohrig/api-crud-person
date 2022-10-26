@@ -30,6 +30,15 @@ public class PersonController {
 
     }
 
+    @GetMapping(value ="/consult")
+    @ResponseBody
+    public ResponseEntity<List<Person>> consultPersonByName(@RequestParam String name){
+        List<Person> persons = personRepository.getUserByName(name);
+
+        return new ResponseEntity<List<Person>>(persons,HttpStatus.OK);
+
+    }
+
 
     @PostMapping(value = "/", produces = "application/json")
     public ResponseEntity<Person> register(@RequestBody Person person){
